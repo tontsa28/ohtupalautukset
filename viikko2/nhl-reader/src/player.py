@@ -37,3 +37,9 @@ class PlayerStats:
             return player.points
 
         return sorted([player for player in self.reader.get_players() if player.nationality == nationality], key=sort_by_points, reverse=True)
+
+    def get_seasons(self):
+        return ["2018-19", "2019-20", "2020-21", "2021-22", "2022-23", "2023-24", "2024-25", "2025-26"]
+
+    def get_nationalities(self):
+        return sorted(list(set([player.nationality for player in self.reader.get_players()])))
