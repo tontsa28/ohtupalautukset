@@ -1,3 +1,5 @@
+import requests
+
 class Player:
     def __init__(self, dict):
         self.name = dict['name']
@@ -8,6 +10,30 @@ class Player:
         self.team = dict['team']
         self.games = int(dict['games'])
         self.id = int(dict['id'])
-    
+
     def __str__(self):
         return f"{self.name:22}{self.team:16}{self.goals:2} + {self.assists:2} = {self.points}"
+
+class PlayerReader:
+    def __init__(self, url):
+        self.url = url
+
+    def get_players(self):
+        players = []
+        response = requests.get(self.url).json()
+
+        for player_dict in response:
+            player = Player(player_dict)
+            players.append(player)
+
+        return players
+
+class PlayerStats:
+    def __init__(self, reader):
+        self.reader = reader
+
+    def top_scorers_by_nationality(self, nationality):
+        def sort_by_points(player):
+            return player.points
+
+        return sorted([player for player in self.reader.get_players() if player.nationality == nationality], key=sort_by_points, reverse=True)
