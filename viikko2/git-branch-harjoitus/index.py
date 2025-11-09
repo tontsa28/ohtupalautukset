@@ -4,6 +4,7 @@ from logger import logger
 from summa import summa
 from erotus import erotus
 from tulo import tulo
+from osamaara import osamaara
 
 logger("aloitetaan ohjelma") # muutos mainissa
 
@@ -12,6 +13,7 @@ y = int(input("luku 2: "))
 print(f"Lukujen {x} ja {y} summa on {summa(x, y)}")  # muutos bugikorjaus-branchissa
 print(f"Lukujen {x} ja {y} erotus on {erotus(x, y)}")  # muutos bugikorjaus-branchissa
 print(f"Lukujen {x} ja {y} tulo on {tulo(x, y)}")
+print(f"Lukujen {x} ja {y} osamäärä on {osamaara(x, y)}")
 
 logger("lopetetaan ohjelma")
 print("goodbye!") # lisäys bugikorjaus-branchissa
