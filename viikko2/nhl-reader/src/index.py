@@ -1,12 +1,12 @@
-from player import PlayerReader, PlayerStats
 from rich.console import Console
 from rich.table import Table
 from rich.prompt import Prompt
 from rich import box
+from player import PlayerReader, PlayerStats
 
 console = Console()
 
-def render_top_scorers_by_nationality(stats, season, nationality: str):
+def render_top_scorers_by_nationality(stats, season, nationality: str): # pylint: disable=too-many-statements
     players = stats.top_scorers_by_nationality(nationality)
     if not players:
         console.print(f"No players from {nationality}", style="bold red")
